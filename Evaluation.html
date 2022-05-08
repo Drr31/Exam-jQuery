@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+            <title>Evaluation jquery</title>
+            <link rel="stylesheet" href="styleeval.css">
+            
+        </head>
+    <body>
+        <header> 
+            <nav>
+                <div id="#a1"> 
+                    
+                <h1 id="right">M2202</h1>
+                
+                <ul id="menu">
+                        <li>    <!-- menu principale -->
+                            <a href="#a1"><strong>Les contenus</strong></a>
+                            <ul>    <!-- menu secondaire --> 
+                                <li class="sous"><a href="#a2">Contenu 1</a></li>
+                                <li class="sous"><a href="#a3">Contenu 2</a></li>
+                                <li class="sous"><a href="#a4">Contenu 3</a></li>
+                            </ul>
+                        </li> 
+                    </ul>
+                </div>
+            </nav>	
+            <script>
+        
+                $(document).ready(function(){
+                    $('#menu li ul').hide();
+                    $('#menu > li>a').on({
+                        mouseenter: function(){
+                            $('#menu li ul').hide();
+                            $(this).next().slideDown();
+                        }
+                    });
+                    $('#menu li ul').on({
+                        mouseleave: function(){
+                            $(this).slideUp();
+                        }
+                    });
+                    $('#menu').on({
+                        mouseleave: function(){
+                            $(this).children('ul:visible').slideUp();
+                        }
+                    });	
+                });
+            </script>
+        </header>
+
+
+        <div id="a2"> 
+        <div id="seconde">
+            <!--Installation de d'image avec jQery-->
+            <h1>Image 	installée	en	jQuery</h1>
+        </div>
+    </div>
+        <script> 
+            $('#seconde').append('<img id="image" width="500px" height="auto" src="" alt="desert">');
+            $('#image').attr('src', 'images/desert.jpg');
+        </script>
+
+        <!-- diaporama de 5 images ,changent toutes les 2 secondes, clic pause, reclic relance  -->
+<div id="a3"> <h1> My Slides</h1>
+    <div id='diaporama'>
+    </div>
+
+    <script>
+            
+    var nb = 5;
+    var actuel = 0;
+    var imgsrep = 'images/'; 
+    var imgs = new Array();
+    var t; 
+
+
+    for (i=0;i<nb;i++){
+        imgs.push(imgsrep + 'image' + i + '.jpg');
+    }
+
+    $(document).ready(function(){
+        //préchargement des images
+        charge_images();
+        
+        //Insertion les images dans la div d'id diaporma
+        $('<img id=\'voir\' alt=\'une image\'width="1000px" />').attr('src', imgsrep + 'image0.jpg').appendTo($('#diaporama'));
+        
+        //le  timer
+        t = setInterval(change_image, 2000);
+        var clickCounter=-1 ;
+        //you click you stop slides
+    
+        $('#voir').click(function(){
+            clearInterval(t);
+            clickCounter++;
+        // you click another time slide restart	 
+            if (clickCounter%2) {
+                t=setInterval(change_image,2000);
+            }		
+        });
+        
+
+        
+    });
+
+    // changement d'image
+    function change_image(){
+            actuel++; 
+            if(actuel===nb){actuel=0;} 
+            $('#voir').attr('src', imgs[actuel]);	
+    }
+
+    function charge_images(){
+        $(imgs).each(function(){
+            $("<img/>").src = imgsrep + this;	
+        });
+    }
+
+   </script>
+
+
+</div>
+
+
+        <!-- on veut utiliser fonction survole mais sans :hover  -->
+        <div id="a4" > 
+        <h1 id="last">
+            Hover Me 
+        </h1>
+    </div>
+
+        <script>
+         $('#a4').append('<img id="survol" src="" alt="desert">');
+            $('#survol').attr('src', 'images/desert.jpg');
+
+            $('#a4').mouseenter(function() {
+                $('#survol').css('display', 'block');
+                $('#a4').mousemove(function(event) {
+                    $('#survol')
+                });
+            $('#a4').mouseleave(function() {
+                $('#survol').css('display', 'none');
+
+            });
+        });
+        </script>
+
+    </body>
+</html>
