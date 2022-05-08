@@ -1,2 +1,2 @@
-# Ecam-jQuery
-Ecam jQuery M2203 IUT DE TROYES 2019
+# Exam-jQuery
+Exam jQuery M2203 IUT DE TROYES 2019
