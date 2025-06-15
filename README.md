@@ -44,14 +44,14 @@ evaluation-jquery/
 
 1. Cloner le dépôt :
    ```bash
-   git clone https://github.com/<ton-utilisateur>/evaluation-jquery.git
+   git clone https://github.com/Drr31/evaluation-jquery.git
    ```
 2. Ouvrir le fichier `index.html` dans un navigateur moderne.
 3. Vérifier que les images sont bien présentes dans le dossier `images/`.
 
 ## 👨‍🎓 Auteur
 
-Projet réalisé par **[Ton Nom]** – IUT MMI – Module M2202
+Projet réalisé par **[Dardor Rochdi]** – IUT MMI – Module M2202
 
 ---
 
